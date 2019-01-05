@@ -1,0 +1,40 @@
+{
+  "name": "nodejs-auxiliary",
+  "version": "1.0.0",
+  "description": "维护一些nodejs常用的辅助函数以及连接模块等",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha --recursive test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a630140621/nodejs-auxiliary.git"
+  },
+  "keywords": [
+    "nodejs",
+    "auxiliary",
+    "辅助函数"
+  ],
+  "author": "lovecrazy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/a630140621/nodejs-auxiliary/issues"
+  },
+  "homepage": "https://github.com/a630140621/nodejs-auxiliary#readme",
+  "dependencies": {
+    "elasticsearch": "^15.2.0",
+    "ioredis": "^4.3.0",
+    "lodash": "^4.17.11",
+    "mongodb": "^3.1.10",
+    "mysql": "^2.16.0",
+    "redis": "^2.8.0",
+    "winston": "^3.1.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0"
+  }
+}
