@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/a630140621/nodejs-auxiliary#readme",
   "dependencies": {
+    "denque": "^1.4.0",
     "elasticsearch": "^15.2.0",
     "ioredis": "^4.3.0",
     "lodash": "^4.17.11",
