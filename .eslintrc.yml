@@ -11,10 +11,11 @@ rules:
     - 4
   linebreak-style:
     - error
-    - unix
+    - windows
   quotes:
     - error
     - double
+    - allowTemplateLiterals: true
   semi:
     - error
     - always
