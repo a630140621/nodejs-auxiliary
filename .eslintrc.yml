@@ -11,7 +11,7 @@ rules:
     - 4
   linebreak-style:
     - error
-    - windows
+    - unix
   quotes:
     - error
     - double
@@ -19,5 +19,5 @@ rules:
   semi:
     - error
     - always
-  no-console: off
-  no-unused-vars: off
+  no-console: 0
+  no-unused-vars: 0
