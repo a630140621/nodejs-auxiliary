@@ -4,6 +4,7 @@ const suite = new Benchmark.Suite;
 let AC_1 = require("./1-Aho-Corasick");
 let AC_2 = require("./2-Aho-Corasick");
 let AC_3 = require("./3-Aho-Corasick");
+let trie = require("./trie");
 
 
 suite
@@ -20,6 +21,11 @@ suite
     .add("3-Aho-Corasick", function () {
         for (let content of test_content_list) {
             AC_3.search(content);
+        }
+    })
+    .add("trie", function () {
+        for (let content of test_content_list) {
+            trie.search(content);
         }
     })
     // add listeners
