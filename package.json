@@ -26,12 +26,17 @@
   },
   "homepage": "https://github.com/a630140621/nodejs-auxiliary#readme",
   "dependencies": {
+    "aho-corasick-node": "^1.0.2",
+    "aho-corasick-search": "^1.0.0",
+    "aho-corasick2": "^1.0.2",
+    "cheerio": "^1.0.0-rc.3",
     "denque": "^1.4.0",
     "elasticsearch": "^15.2.0",
     "ioredis": "^4.3.0",
     "lodash": "^4.17.11",
-    "mongodb": "^3.1.10",
+    "mongodb": "^3.3.2",
     "mysql": "^2.16.0",
+    "neo4j-driver": "^1.7.4",
     "redis": "^2.8.0",
     "uuid": "^3.3.2",
     "winston": "^3.1.0"
