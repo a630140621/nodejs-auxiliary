@@ -1,4 +1,4 @@
-const lodash = require('lodash');
+const lodash = require("lodash");
 
 
 /**
@@ -10,7 +10,7 @@ Object.defineProperty(Object.prototype, "$isEmpty", {
     value: function () {
         return _isEmpty(this);
     }
-})
+});
 
 /**
  * 获取指定 path 的值, 若没有则返回 default_value
@@ -23,7 +23,7 @@ Object.defineProperty(Object.prototype, "$get", {
     value: function (path, default_value) {
         return lodash.get(this, path, default_value);
     }
-})
+});
 
 /**
  * 判断对象指定 path 的值是否存在
@@ -34,7 +34,7 @@ Object.defineProperty(Object.prototype, "$has", {
     value: function (path) {
         return lodash.has(this, path);
     }
-})
+});
 
 /**
  * 深拷贝
@@ -45,7 +45,7 @@ Object.defineProperty(Object.prototype, "$deepClone", {
     value: function () {
         return lodash.cloneDeep(this);
     }
-})
+});
 
 /**
  * 对这个对象 key 对应的 value 进行类型检验, 可检查的类型目前包括 (String, Number, Boolean, Array)
@@ -66,7 +66,7 @@ Object.defineProperty(Object.prototype, "$inspect", {
     value: function (inspect_obj) {
         return _inspect(this, inspect_obj);
     }
-})
+});
 
 
 function _isEmpty(obj) {
@@ -84,20 +84,20 @@ function _inspect(obj, inspect_obj) {
         let _type_string = typeof _value;
         // 检测类型是否正确
         switch (_expect_type_string) {
-            case 'string':
-                if (_type_string !== 'string') return `type error: ${path} expect String but receive ${_type_string}`;
-                break;
-            case 'array':
-                if (!Array.isArray(_value)) return `type error: ${path} expect Array|List but receive ${_type_string}`;
-                break;
-            case 'boolean':
-                if (_type_string !== 'boolean') return `type error: ${path} expect Boolean but receive ${_type_string}`;
-                break;
-            case 'number':
-                if (_type_string !== 'number') return `type error: ${path} expect Number but receive ${_type_string}`;
-                break;
-            default:
-                return `not support: do not support this type#${_expect_type_string} inspect`;
+        case "string":
+            if (_type_string !== "string") return `type error: ${path} expect String but receive ${_type_string}`;
+            break;
+        case "array":
+            if (!Array.isArray(_value)) return `type error: ${path} expect Array|List but receive ${_type_string}`;
+            break;
+        case "boolean":
+            if (_type_string !== "boolean") return `type error: ${path} expect Boolean but receive ${_type_string}`;
+            break;
+        case "number":
+            if (_type_string !== "number") return `type error: ${path} expect Number but receive ${_type_string}`;
+            break;
+        default:
+            return `not support: do not support this type#${_expect_type_string} inspect`;
         }
     }
 
@@ -126,9 +126,9 @@ if (!module.parent) {
     // console.log(a.$inspect(inspect_obj))
     let a = {
         "1": "2"
-    }
+    };
     for (let key in a) {
-        console.log(key)
+        console.log(key);
     }
-    console.log(a.$get("1"))
+    console.log(a.$get("1"));
 }
