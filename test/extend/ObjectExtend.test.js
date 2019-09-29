@@ -60,4 +60,24 @@ describe("Test ObjectExtend", () => {
         o2_inspect_obj["c.d"] = "array";
         expect(o2.$inspect(o2_inspect_obj)).be.a("string").and.equal("type error: c.d expect Array|List but receive boolean");
     });
+    it("Object.$reserveKeys", () => {
+        let o = {
+            "a": "a",
+            "b": {
+                "b": "b"
+            },
+            "c": 1,
+            "d": true,
+            "e": [1, 2, 3]
+        };
+
+        expect(o).be.an("object").and.to.have.all.keys("a", "b", "c", "d", "e");
+        expect(o.$reserveKeys(["a"])).be.an("object").and.to.have.all.keys("a");
+        expect(o).be.an("object").and.to.have.all.keys("a", "b", "c", "d", "e");
+        expect(o.$reserveKeys(["a", "b"])).be.an("object").and.to.have.all.keys("a", "b");
+        expect(o.$reserveKeys(["a", "c"])).be.an("object").and.to.have.all.keys("a", "c");
+        expect(o.$reserveKeys(["a", "d"])).be.an("object").and.to.have.all.keys("a", "d");
+        expect(o.$reserveKeys(["a", "e"])).be.an("object").and.to.have.all.keys("a", "e");
+        expect(o).be.an("object").and.to.have.all.keys("a", "b", "c", "d", "e");
+    });
 });

@@ -68,6 +68,27 @@ Object.defineProperty(Object.prototype, "$inspect", {
     }
 });
 
+/**
+ * 仅保留指定的key，不修改原对象
+ */
+Object.defineProperty(Object.prototype, "$reserveKeys", {
+    enumerable: false,
+    writable: false,
+    value: function (keys) {
+        return _reserveKeys(this, keys);
+    }
+});
+
+
+function _reserveKeys(obj, keys) {
+    if (!Array.isArray(keys)) throw new Error("keys must be an array");
+    let obj_ = {};
+    for (let key of keys) {
+        obj_[key] = lodash.cloneDeep(obj[key]);
+    }
+
+    return obj_;
+}
 
 function _isEmpty(obj) {
     for (let key of Object.keys(obj)) {
@@ -84,20 +105,20 @@ function _inspect(obj, inspect_obj) {
         let _type_string = typeof _value;
         // 检测类型是否正确
         switch (_expect_type_string) {
-        case "string":
-            if (_type_string !== "string") return `type error: ${path} expect String but receive ${_type_string}`;
-            break;
-        case "array":
-            if (!Array.isArray(_value)) return `type error: ${path} expect Array|List but receive ${_type_string}`;
-            break;
-        case "boolean":
-            if (_type_string !== "boolean") return `type error: ${path} expect Boolean but receive ${_type_string}`;
-            break;
-        case "number":
-            if (_type_string !== "number") return `type error: ${path} expect Number but receive ${_type_string}`;
-            break;
-        default:
-            return `not support: do not support this type#${_expect_type_string} inspect`;
+            case "string":
+                if (_type_string !== "string") return `type error: ${path} expect String but receive ${_type_string}`;
+                break;
+            case "array":
+                if (!Array.isArray(_value)) return `type error: ${path} expect Array|List but receive ${_type_string}`;
+                break;
+            case "boolean":
+                if (_type_string !== "boolean") return `type error: ${path} expect Boolean but receive ${_type_string}`;
+                break;
+            case "number":
+                if (_type_string !== "number") return `type error: ${path} expect Number but receive ${_type_string}`;
+                break;
+            default:
+                return `not support: do not support this type#${_expect_type_string} inspect`;
         }
     }
 
