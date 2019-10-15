@@ -84,7 +84,7 @@ function _reserveKeys(obj, keys) {
     if (!Array.isArray(keys)) throw new Error("keys must be an array");
     let obj_ = {};
     for (let key of keys) {
-        obj_[key] = lodash.cloneDeep(obj[key]);
+        if (key in obj) obj_[key] = lodash.cloneDeep(obj[key]);
     }
 
     return obj_;
