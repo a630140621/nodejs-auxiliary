@@ -34,7 +34,6 @@ describe(`Test Cache`, () => {
     });
 
     it(`Cache.get with timeout`, () => {
-        console.log(cache.get("key91"));
         expect(cache.get("key91")).deep.equal("value1");
         expect(cache.get("key92")).deep.equal([]);
         expect(cache.get("key93")).to.be.true;
@@ -52,7 +51,6 @@ describe(`Test Cache`, () => {
     });
 
     it(`Cache.get without timeout`, () => {
-        console.log(cache.get("key1"));
         expect(cache.get("key1")).deep.equal("value1");
         expect(cache.get("key2")).deep.equal([]);
         expect(cache.get("key3")).to.be.true;
@@ -66,6 +64,36 @@ describe(`Test Cache`, () => {
             expect(cache.get("key3")).to.be.true;
             expect(cache.get("key4")).to.be.false;
             expect(cache.get("key5")).deep.equal({});
+        }, 1000);
+    });
+
+    it(`Cache.has with timeout`, () => {
+        cache.set("key50", false, 1500);
+        expect(cache.has("key50")).to.be.true;
+        setTimeout(() => {
+            expect(cache.has("key50")).to.be.true;
+        }, 1000);
+        setTimeout(() => {
+            expect(cache.has("key50")).to.be.false;
+        }, 2000);
+    });
+
+    it(`Cache.has without timeout`, () => {
+        expect(cache.has("key1")).to.be.true;
+        expect(cache.has("key2")).to.be.true;
+        expect(cache.has("key3")).to.be.true;
+        expect(cache.has("key4")).to.be.true;
+        expect(cache.has("key5")).to.be.true;
+        expect(cache.has("not exist")).to.be.false;
+
+        // 1s 后
+        setTimeout(() => {
+            expect(cache.has("key1")).to.be.true;
+            expect(cache.has("key2")).to.be.true;
+            expect(cache.has("key3")).to.be.true;
+            expect(cache.has("key4")).to.be.true;
+            expect(cache.has("key5")).to.be.true;
+            expect(cache.has("not exist")).to.be.false;
         }, 1000);
     });
 });
