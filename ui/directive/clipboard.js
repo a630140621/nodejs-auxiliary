@@ -8,8 +8,26 @@ import {
 /**
  * Usage: 
  *  <el v-clipboard="text"></el>
+ * 
+ * eg.
+ *  <template>
+ *      <el-card>
+ *          <el-input v-model="message"></el-input>
+ *          <el-button type="primary" v-clipboard="message">点击复制</el-button>
+ *      </el-card>
+ *  </template>
+ *
+ *  <script>
+ *  export default {
+ *      name: "Clipboard",
+ *      data() {
+ *          return {
+ *              message: "123"
+ *          };
+ *      }
+ *  };
+ *  </script>
  */
-// 注册一个全局自定义指令 `v-clipboard`
 Vue.directive("clipboard", {
     bind(el, binding) {
         let clipboard = new ClipboardJS(el, {
