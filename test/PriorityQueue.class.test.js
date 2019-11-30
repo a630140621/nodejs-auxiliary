@@ -3,7 +3,7 @@ const expect = require("chai").expect;
 
 
 let priorityQueue = new PriorityQueue();
-describe("PriorityQueue",
+describe("PriorityQueue", () => {
     it("priorityQueue.push", () => {
         priorityQueue.push("item1", 1);
         priorityQueue.push("item2", 5);
@@ -15,7 +15,7 @@ describe("PriorityQueue",
         priorityQueue.push("item8", 1);
         expect(priorityQueue.isEmpty()).to.be.false;
         expect(priorityQueue.length).to.be.equal(8);
-    }),
+    });
     it("priorityQueue.pop", () => {
         let item;
         item = priorityQueue.pop();
@@ -42,5 +42,5 @@ describe("PriorityQueue",
         item = priorityQueue.pop();
         expect(item.priority).to.be.equal(1);
         expect(item.item).to.be.equal("item8");
-    })
-);
+    });
+});
