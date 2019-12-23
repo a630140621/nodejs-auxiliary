@@ -1,8 +1,12 @@
 <template>
   <!-- 
     Usage:
-      <filp-page :load-func="getList"></filp-page>
-    注: function getList 应该返回一个 Promise.resolve(int) 作为 total; 第一次加载该组件时会立即调用传入的 load-func
+      <filp-page :load-func="getList" keydown-event></filp-page>
+    props:
+      load-func: 应该返回一个 Promise.resolve(int) 作为翻页组件总数
+      keydown-event: 是否开启 keydown 翻页和回车事件, 目前内部定义方向键的左右作为翻页按钮，暂不提供自定义；仅在 mounted 时传入才会注册
+
+    注: 第一次加载该组件时会立即调用传入的 load-func
 
     思考: 传入一个函数并且利用函数的返回值来进行一些页面显示操作，是否加重了 父子组件间的耦合呢？——虽然这样做可以让子组件封装更多的内容，而父组件只需要定义函数并按照要求返回即可。
 
@@ -38,13 +42,15 @@ export default {
     loadFunc: {
       type: Function,
       required: true
-    }
+    },
+    keydownEvent: Boolean
   },
   data() {
     return {
       pagenum: 1,
       pagesize: 10,
-      total: 0
+      total: 0,
+      keydownHandler: null
     };
   },
   methods: {
@@ -53,10 +59,45 @@ export default {
     },
     async handleCurrentChange(pagenum) {
       this.total = await this.loadFunc(pagenum);
+    },
+    register() {
+      this.keydownHandler = async e => {
+        switch (e.keyCode) {
+          case 13:
+            await this.loadFunc(this.pagenum);
+            break;
+          case 37: // ArrowLeft
+            // case 38: // ArrowUp
+            if (this.pagenum > 1) this.pagenum--;
+            await this.loadFunc(this.pagenum);
+            break;
+          case 39: // ArrowRight
+            // case 40: // ArrowDown
+            if (this.pagenum < Math.ceil(this.total / this.pagesize))
+              this.pagenum++;
+            await this.loadFunc(this.pagenum);
+            break;
+        }
+      };
+      document.addEventListener("keydown", this.keydownHandler);
+    },
+    unregister() {
+      document.removeEventListener("keydown", this.keydownHandler);
+      this.keydownHandler = null;
     }
   },
   async mounted() {
     this.total = await this.loadFunc(this.pagenum);
+    if (this.keydownEvent) {
+      console.log("register");
+      this.register();
+    }
+  },
+  beforeDestroy() {
+    if (this.keydownEvent) {
+      console.log("before destroy");
+      this.unregister();
+    }
   }
 };
 </script>
@@ -65,7 +106,6 @@ export default {
 .center {
   display: flex;
   justify-content: center;
-
   margin: 10px 0;
 }
 </style>
