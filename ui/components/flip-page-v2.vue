@@ -68,14 +68,17 @@ export default {
             break;
           case 37: // ArrowLeft
             // case 38: // ArrowUp
-            if (this.pagenum > 1) this.pagenum--;
-            await this.loadFunc(this.pagenum);
+            if (this.pagenum > 1) {
+              this.pagenum--;
+              await this.loadFunc(this.pagenum);
+            }
             break;
           case 39: // ArrowRight
             // case 40: // ArrowDown
-            if (this.pagenum < Math.ceil(this.total / this.pagesize))
+            if (this.pagenum < Math.ceil(this.total / this.pagesize)) {
               this.pagenum++;
-            await this.loadFunc(this.pagenum);
+              await this.loadFunc(this.pagenum);
+            }
             break;
         }
       };
