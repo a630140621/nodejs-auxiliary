@@ -19,17 +19,16 @@
         }
       }
   -->
-  <div class="center">
-    <el-pagination
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-      :current-page="pagenum"
-      :page-size="pagesize"
-      layout="total, prev, pager, next"
-      :total="total"
-      :hide-on-single-page="true"
-    ></el-pagination>
-  </div>
+  <el-pagination
+    class="center"
+    @size-change="handleSizeChange"
+    @current-change="handleCurrentChange"
+    :current-page="pagenum"
+    :page-size="pagesize"
+    layout="total, prev, pager, next"
+    :total="total"
+    :hide-on-single-page="true"
+  ></el-pagination>
 </template>
 
 <script>
