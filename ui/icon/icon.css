@@ -1,0 +1,21 @@
+.lc {
+    display: block;
+    height: 32px;
+    width: 32px;
+}
+
+.lc-view {
+    background: url('./_icon/view.svg') no-repeat center center;
+}
+
+.lc-view-off {
+    background: url('./_icon/view-off.svg') no-repeat center center;
+}
+
+.lc-edit {
+    background: url('./_icon/edit.svg') no-repeat center center;
+}
+
+.lc-setting {
+    background: url('./_icon/setting.svg') no-repeat center center;
+}
