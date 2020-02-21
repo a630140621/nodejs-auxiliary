@@ -6,7 +6,6 @@
 
 1. vue 2.x
 2. elementui 2.12.0
-3. font-awesome 5.x
 
 ## 目录结构
 
