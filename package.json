@@ -35,17 +35,19 @@
     "elasticsearch": "^15.2.0",
     "element-ui": "^2.12.0",
     "ioredis": "^4.3.0",
-    "lodash": "^4.17.11",
-    "mongodb": "^3.3.2",
+    "lodash": "^4.17.15",
+    "mongodb": "^3.4.1",
     "mysql": "^2.16.0",
     "neo4j-driver": "^1.7.4",
     "redis": "^2.8.0",
     "uuid": "^3.3.2",
     "vue": "^2.6.10",
-    "winston": "^3.1.0"
+    "winston": "^3.2.1",
+    "xlsx": "^0.15.2"
   },
   "devDependencies": {
     "benchmark": "^2.1.4",
-    "chai": "^4.2.0"
+    "chai": "^4.2.0",
+    "jest": "^25.1.0"
   }
 }
