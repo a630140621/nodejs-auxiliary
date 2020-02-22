@@ -9,7 +9,9 @@
   },
   "scripts": {
     "test": "mocha --recursive test",
-    "coverage": "nyc npm run test"
+    "test:coverage": "nyc npm run test",
+    "test:benchmark": "",
+    "test:report": "nyc report --reporter=lcov --reporter=text"
   },
   "repository": {
     "type": "git",
