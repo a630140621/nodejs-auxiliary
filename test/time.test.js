@@ -10,7 +10,7 @@ function print() {
     });
 }
 
-describe("time.test.js", async () => {
+describe("time.test.js", () => {
     it("function timeoutDecorator and expect not timeout", async () => {
         let printNoTimeout = time.timeoutDecorator(print, 11);
         expect(await printNoTimeout()).to.be.true;

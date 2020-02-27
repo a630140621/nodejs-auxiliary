@@ -51,4 +51,18 @@ describe("Trie", () => {
         expect(trie.has("app")).to.be.true;
         expect(trie.has("apple")).to.be.true;
     });
+
+    it("trie.startsWith should return two value", () => {
+        let trie = new Trie();
+        trie.add("s");
+        trie.add("sll");
+        trie.add("");
+        expect(trie.startsWith("s")).to.be.an("array").that.has.length(2).which.include("s").and.include("sll");
+    });
+
+    it("trie.startsWith should return ['']", () => {
+        let trie = new Trie();
+        trie.add("");
+        expect(trie.startsWith("")).to.be.an("array").that.has.length(1).which.include("");
+    });
 });
