@@ -4,11 +4,11 @@ const expect = require("chai").expect;
 
 describe("uuid", () => {
     it("generate 10000 uuid", () => {
-        let container = [];
+        let container = {};
         for (let i = 0; i < 1000; i++) {
             let id = uuid();
-            expect(container.includes(id), `uuid#(${id}) has exist`).to.be.false;
-            container.push(id);
+            expect(container[id], `uuid#(${id}) has exist`).to.be.undefined;
+            container[id] = true;
         }
     });
 });

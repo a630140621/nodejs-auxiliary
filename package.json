@@ -8,7 +8,10 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha --recursive test"
+    "test": "mocha --recursive test",
+    "test:coverage": "nyc npm run test",
+    "test:benchmark": "",
+    "test:report": "nyc report --reporter=lcov --reporter=text"
   },
   "repository": {
     "type": "git",
@@ -39,6 +42,7 @@
     "mongodb": "^3.4.1",
     "mysql": "^2.16.0",
     "neo4j-driver": "^1.7.4",
+    "nyc": "^15.0.0",
     "redis": "^2.8.0",
     "uuid": "^3.3.2",
     "vue": "^2.6.10",
@@ -48,6 +52,7 @@
   "devDependencies": {
     "benchmark": "^2.1.4",
     "chai": "^4.2.0",
-    "jest": "^25.1.0"
+    "jest": "^25.1.0",
+    "sinon": "^9.0.0"
   }
 }

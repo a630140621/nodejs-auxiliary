@@ -2,12 +2,8 @@ const Cache = require("../lib/Cache.class");
 let expect = require("chai").expect;
 
 
+let cache = new Cache("demo");
 describe(`Test Cache`, () => {
-    let cache;
-    before(() => {
-        cache = new Cache("demo");
-    });
-
     it(`Cache Singleton`, () => {
         let cache_1 = new Cache("test_1");
         let cache_2 = new Cache("test_2");
