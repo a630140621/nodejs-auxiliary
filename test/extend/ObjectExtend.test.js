@@ -14,12 +14,15 @@ let o2 = {
             "f": null
         },
         "f": ["f1", "f2"]
-    }
+    },
+    "d": [{
+        "id": 1
+    }]
 };
 describe("Test ObjectExtend", () => {
     it("forin And Object.keys() should not find extend keys", () => {
         expect(Object.keys(o1)).to.be.an("array").and.has.length(0);
-        expect(Object.keys(o2)).to.be.an("array").and.has.length(3).and.to.be.deep.equal(["a", "b", "c"]);
+        expect(Object.keys(o2)).to.be.an("array").and.has.length(4).and.to.be.deep.equal(["a", "b", "c", "d"]);
     });
     it("Object.$isEmpty()", () => {
         expect(o1.$isEmpty()).be.true;
@@ -45,20 +48,6 @@ describe("Test ObjectExtend", () => {
 
         expect(copy_o2).be.a("object").and.equal(o2);
         expect(deep_o2).be.a("object").and.not.equal(o2);
-    });
-    it("Object.$inspect()", () => {
-        let o2_inspect_obj = {
-            "a": "string",
-            "b": "number",
-            "c.d": "boolean",
-            "c.a": "string",
-            "c.e.e": "array",
-            "c.f": "array"
-        };
-
-        expect(o2.$inspect(o2_inspect_obj)).to.be.true;
-        o2_inspect_obj["c.d"] = "array";
-        expect(o2.$inspect(o2_inspect_obj)).be.a("string").and.equal("type error: c.d expect Array|List but receive boolean");
     });
     it("Object.$reserveKeys", () => {
         let o = {

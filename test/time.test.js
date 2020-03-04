@@ -30,6 +30,6 @@ describe("time.test.js", () => {
     it("test delay(sleep) function without default value", async () => {
         let start = Date.now();
         await time.delay(10);
-        expect(Date.now() - start).to.lt(14).and.gte(10);
+        expect(Date.now() - start).to.lt(20).and.gte(8);
     });
 });
